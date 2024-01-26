@@ -191,8 +191,7 @@ class YouTubeAPI {
         if(this.#playerMap.has(parent)) {
             return this.#playerMap.get(parent);
         } else {
-            return false; // falsyな値を返したかっただけ
-            // Todo nullを返すようにする
+            return null; // NOTE nullに変更
         }
     };
 

@@ -8,12 +8,12 @@
 <body>
     <script src="scripts/lib.js"></script>
     <script src="scripts/youtube-api.js"></script>
-    <script src="scripts/features/add-section.js"></script>
+    <script src="scripts/features.js"></script>
     <main>
         <section id="sample">
             <p>見本</p>
-            <input type="text" placeholder="追加したい動画のID" id="add-video-input">
-            <button id="add-video-btn">動画を追加</button>
+            <input type="text" placeholder="追加したい動画のID" class="add-video-input">
+            <button class="add-video-btn" onclick="addVideo(this)">動画を追加</button>
             <hr>
             <button onclick="YouTubeAPI.play(this)">再生</button>
             <button onclick="YouTubeAPI.pause(this)">停止</button>
