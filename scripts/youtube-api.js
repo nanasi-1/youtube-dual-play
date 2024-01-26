@@ -217,7 +217,7 @@ class YouTubeAPI {
             return;
         }
 
-        this.getPlayer(video.getIframe().parentElement).deleteVideo(id);
+        this.getPlayer(video.getIframe().parentElement.parentElement).deleteVideo(id);
         console.debug(`${id}が削除されました`);
     }
 
