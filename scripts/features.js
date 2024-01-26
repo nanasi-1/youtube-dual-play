@@ -1,11 +1,15 @@
-function addSection() {
-    const buttons = strToElement(`
-        <div>
+/** @param {HTMLButtonElement} btn */
+function addArea(btn) {
+    const area = strToElement(`
+        <section>
+            <input type="text" placeholder="追加したい動画のID" class="add-video-input">
+            <button class="add-video-btn" onclick="addVideo(this)">動画を追加</button>
             <button onclick="YouTubeAPI.play(this)">再生</button>
             <button onclick="YouTubeAPI.pause(this)">停止</button>
-        </div>
+        </section>
     `);
-    document.querySelector('main').append(buttons);
+    document.querySelector('main').insertBefore(area, btn);
+    new Player(area);
 }
 
 /** @param {HTMLButtonElement} btn */
