@@ -1,30 +1,3 @@
-/** @param {HTMLButtonElement} btn */
-async function addVideo(btn) {
-    if(btn===void 0) {
-        console.warn('第一引数が空です');
-        return;
-    }
-    /** @type {HTMLInputElement} */ const inputElem = btn.previousElementSibling;
-    if(inputElem===null) {
-        console.warn(`inputタグが見つかりませんでした`, btn);
-        return;
-    }
-    if(inputElem.tagName!=='INPUT') {
-        console.warn(`btnタグの直前がinputじゃありませんでした`, btn, inputElem);
-        return;
-    }
-    if(btn.parentElement.tagName!=='SECTION') {
-        console.warn(`btnタグの親がsectionじゃありませんでした`, btn.parentElement. btn);
-        return;
-    }
-    const videoId = inputElem.value;
-    inputElem.value = '';
-
-    const parent = strToElement(`<div class="video-container"></div>`)
-    btn.parentElement.append(parent);
-    await YouTubeAPI.getPlayer(btn.parentElement).addVideo(videoId, parent);
-}
-
 class Area {
     #player;
     /** @type {HTMLElement} */ #element;
@@ -32,7 +5,7 @@ class Area {
         this.#element = strToElement(`
             <section>
                 <input type="text" placeholder="追加したい動画のID" class="add-video-input">
-                <button class="add-video-btn" onclick="addVideo(this)">動画を追加</button>
+                <button class="add-video-btn" onclick="AreaList.addVideo(this)">動画を追加</button>
                 <button onclick="YouTubeAPI.play(this)">再生</button>
                 <button onclick="YouTubeAPI.pause(this)">停止</button>
                 <button class="area-remove-btn">×</button>
@@ -42,30 +15,74 @@ class Area {
 
         // 削除処理
         this.#element.querySelector('.area-remove-btn').addEventListener('click', () => {
-            if(confirm('エリアを削除しますか？')) this.remove();
+            if (confirm('エリアを削除しますか？')) this.remove();
         });
     }
     get element() {
         return this.#element;
     }
+    get player() {
+        return this.#player;
+    }
+
+    async addVideo(videoId) {
+        const parent = strToElement(`<div class="video-container"></div>`)
+        this.#element.append(parent);
+        await this.#player.addVideo(videoId, parent);
+    }
+
     remove() {
         AreaList.removeArea(this.element);
     }
 }
 
 class AreaList {
-    /** @type {Map<HTMLElement, Area>} */ static #areaMap = new Map();
-    static addArea(btn) {
-        const area = new Area();
-        document.querySelector('main').insertBefore(area.element, btn);
-        this.#areaMap.set(area.element, area);
+    /** @param {HTMLButtonElement} btn */
+    static async addVideo(btn) {
+        if (btn === void 0) {
+            console.warn('第一引数が空です');
+            return;
+        }
+
+        /** @type {HTMLInputElement} */
+        const inputElem = btn.previousElementSibling;
+        if (inputElem === null) {
+            console.warn(`inputタグが見つかりませんでした`, btn);
+            return;
+        }
+        if (inputElem.tagName !== 'INPUT') {
+            console.warn(`btnタグの直前がinputじゃありませんでした`, btn, inputElem);
+            return;
+        }
+        if (btn.parentElement.tagName !== 'SECTION') {
+            console.warn(`btnタグの親がsectionじゃありませんでした`, btn.parentElement.btn);
+            return;
+        }
+
+        // inputタグの中身を消す
+        const videoId = inputElem.value;
+        inputElem.value = '';
+        if (!videoId) return;
+
+        AreaList.getArea(btn.parentElement).addVideo(videoId);
     }
+
+    /** @type {Map<HTMLElement, Area>} */ static #areaMap = new Map();
+    static addArea() {
+        const area = new Area();
+        const addAreaBtn = document.getElementById('add-area-btn');
+        document.querySelector('main').insertBefore(area.element, addAreaBtn);
+        this.#areaMap.set(area.element, area);
+        return area;
+    }
+
     static getArea(elem) {
         return this.#areaMap.get(elem) || null;
     }
+
     static removeArea(elem) {
         const area = this.getArea(elem);
-        if(area===null) { 
+        if (area === null) {
             console.warn('エリアが見つかりませんでした');
             return;
         }

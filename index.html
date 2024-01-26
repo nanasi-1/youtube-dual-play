@@ -11,14 +11,7 @@
     <script src="scripts/youtube-api.js"></script>
     <script src="scripts/features.js"></script>
     <main>
-        <section id="sample">
-            <p>見本</p>
-            <input type="text" placeholder="追加したい動画のID" class="add-video-input">
-            <button class="add-video-btn" onclick="addVideo(this)">動画を追加</button>
-            <button onclick="YouTubeAPI.play(this)">再生</button>
-            <button onclick="YouTubeAPI.pause(this)">停止</button>
-        </section>
-        <button id="add-area" onclick="AreaList.addArea(this)">エリアを新しく追加</button>
+        <button id="add-area-btn" onclick="AreaList.addArea()">エリアを新しく追加</button>
     </main>
     <script src="scripts/onload.js"></script>
 </body>
