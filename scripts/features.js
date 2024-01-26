@@ -26,9 +26,39 @@ class Area {
     }
 
     async addVideo(videoId) {
-        const parent = strToElement(`<div class="video-container"></div>`)
+        if(AreaList.videoIdList.has(videoId)) {
+            alert(`動画ID ${videoId} の動画はすでに存在します`);
+            return;
+        };
+        AreaList.videoIdList.add(videoId);
+
+        const parent = strToElement(`
+        <div class="video-container" data-video-id="${videoId}">
+            <button class="video-delete-btn">×</button>
+        </div>
+        `);
+        parent.querySelector('.video-delete-btn').addEventListener('click', () => this.deleteVideo(videoId));
         this.#element.append(parent);
+
         await this.#player.addVideo(videoId, parent);
+    }
+
+    getVideoElem(videoId) {
+        for (const elem of this.#element.querySelectorAll('.video-container')) {
+            if(elem.dataset.videoId===videoId) return elem;
+        }
+        return null;
+    }
+
+    deleteVideo(videoId) {
+        this.#player.deleteVideo(videoId);
+        const elem = this.getVideoElem(videoId);
+        if(elem===null) {
+            console.warn(`ID ${videoId} の動画は見つかりませんでした`);
+            return;
+        }
+        AreaList.videoIdList.delete(videoId);
+        elem.remove();
     }
 
     remove() {
@@ -37,6 +67,15 @@ class Area {
 }
 
 class AreaList {
+    /** @type {Map<HTMLElement, Area>} */
+    static #areaMap = new Map();
+
+    /** @type {Set<string>} */
+    static #idList = new Set();
+    static get videoIdList() { // あきらめた
+        return this.#idList;
+    }
+
     /** @param {HTMLButtonElement} btn */
     static async addVideo(btn) {
         if (btn === void 0) {
@@ -61,13 +100,12 @@ class AreaList {
 
         // inputタグの中身を消す
         const videoId = inputElem.value;
-        inputElem.value = '';
         if (!videoId) return;
+        inputElem.value = '';
 
         AreaList.getArea(btn.parentElement).addVideo(videoId);
     }
 
-    /** @type {Map<HTMLElement, Area>} */ static #areaMap = new Map();
     static addArea() {
         const area = new Area();
         const addAreaBtn = document.getElementById('add-area-btn');
