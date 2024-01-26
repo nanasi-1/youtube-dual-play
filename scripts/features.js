@@ -13,7 +13,7 @@ function addArea(btn) {
 }
 
 /** @param {HTMLButtonElement} btn */
-function addVideo(btn) {
+async function addVideo(btn) {
     if(btn===void 0) {
         console.warn('第一引数が空です');
         return;
@@ -32,5 +32,9 @@ function addVideo(btn) {
         return;
     }
     const videoId = inputElem.value;
-    YouTubeAPI.getPlayer(btn.parentElement).addVideo(videoId);
+    inputElem.value = '';
+
+    const parent = strToElement(`<div class="video-container"></div>`)
+    btn.parentElement.append(parent);
+    await YouTubeAPI.getPlayer(btn.parentElement).addVideo(videoId, parent);
 }

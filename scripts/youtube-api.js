@@ -25,7 +25,7 @@ class Player {
         console.debug('YouTubeAPI: プレーヤーが追加されました');
     };
 
-    async addVideo(id) {
+    async addVideo(id, parent=this.parent) {
         // 現在読み込み中ならreturn
         if(this.loadings.has(id)) return false;
 
@@ -39,7 +39,7 @@ class Player {
         this.loadings.add(id); // 読み込み中に追加
         
         // divを追加
-        this.parent.append(strToElement(`<div id="${id}"></div>`));
+        parent.append(strToElement(`<div id="${id}"></div>`));
 
         const pr = await this.#replaceVideo(id);
         this.videos.set(id, pr);

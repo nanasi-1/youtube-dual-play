@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTubeの動画を同時再生</title>
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <script src="scripts/lib.js"></script>
@@ -14,7 +15,6 @@
             <p>見本</p>
             <input type="text" placeholder="追加したい動画のID" class="add-video-input">
             <button class="add-video-btn" onclick="addVideo(this)">動画を追加</button>
-            <hr>
             <button onclick="YouTubeAPI.play(this)">再生</button>
             <button onclick="YouTubeAPI.pause(this)">停止</button>
         </section>
