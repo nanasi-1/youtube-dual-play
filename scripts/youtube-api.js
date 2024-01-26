@@ -155,7 +155,7 @@ class YouTubeAPI {
 
     /** @param {HTMLButtonElement} btn */
     static play(btn) {
-        const player = this.getPlayer(btn.parentElement);
+        const player = this.getPlayer(btn.parentElement.parentElement);
         if(!player) return; // 空の場合はさようなら
 
         player.play();
@@ -163,7 +163,7 @@ class YouTubeAPI {
 
     /** @param {HTMLButtonElement} btn */
     static pause(btn) {
-        const player = this.getPlayer(btn.parentElement);
+        const player = this.getPlayer(btn.parentElement.parentElement);
         if(!player) return; // 空の場合はさようなら
 
         player.pause();

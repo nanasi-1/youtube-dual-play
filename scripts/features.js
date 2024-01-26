@@ -4,11 +4,13 @@ class Area {
     constructor() {
         this.#element = strToElement(`
             <section>
-                <input type="text" placeholder="追加したい動画のID" class="add-video-input">
-                <button class="add-video-btn" onclick="AreaList.addVideo(this)">動画を追加</button>
-                <button onclick="YouTubeAPI.play(this)">再生</button>
-                <button onclick="YouTubeAPI.pause(this)">停止</button>
-                <button class="area-remove-btn">×</button>
+                <div class="controller">
+                    <input type="text" placeholder="追加したい動画のID" class="add-video-input">
+                    <button class="add-video-btn" onclick="AreaList.addVideo(this)">動画を追加</button>
+                    <button onclick="YouTubeAPI.play(this)">再生</button>
+                    <button onclick="YouTubeAPI.pause(this)">停止</button>
+                    <button class="area-remove-btn">×</button>
+                </div>
             </section>
         `);;
         this.#player = new Player(this.#element);
@@ -37,7 +39,9 @@ class Area {
             <button class="video-delete-btn">×</button>
         </div>
         `);
-        parent.querySelector('.video-delete-btn').addEventListener('click', () => this.deleteVideo(videoId));
+        parent.querySelector('.video-delete-btn').addEventListener('click', () => {
+            if(confirm('動画を削除しますか？')) this.deleteVideo(videoId);
+        });
         this.#element.append(parent);
 
         await this.#player.addVideo(videoId, parent);
@@ -93,7 +97,7 @@ class AreaList {
             console.warn(`btnタグの直前がinputじゃありませんでした`, btn, inputElem);
             return;
         }
-        if (btn.parentElement.tagName !== 'SECTION') {
+        if (btn.parentElement.parentElement.tagName !== 'SECTION') {
             console.warn(`btnタグの親がsectionじゃありませんでした`, btn.parentElement.btn);
             return;
         }
@@ -103,7 +107,7 @@ class AreaList {
         if (!videoId) return;
         inputElem.value = '';
 
-        AreaList.getArea(btn.parentElement).addVideo(videoId);
+        AreaList.getArea(btn.parentElement.parentElement).addVideo(videoId);
     }
 
     static addArea() {
