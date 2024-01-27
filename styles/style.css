@@ -172,8 +172,15 @@ button.video-delete-btn {
 
 .area-remove-btn {
     position: relative;
-    left: calc(100% - 150px);
-    top: -65px;
+    top: 15px;
+    right: -10px;
+    float: right;
     font-size: 32px;
     color: var(--primary-color);
+}
+
+.seek-bar {
+    margin-left: 10px;
+    width: 50%;
+    max-width: 250px;
 }

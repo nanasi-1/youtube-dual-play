@@ -171,7 +171,7 @@ class YouTubeAPI {
 
     /** @param {HTMLInputElement} input  */
     static seek(input) {
-        const player = this.getPlayer(input.parentElement);
+        const player = this.getPlayer(input.parentElement.parentElement);
         if(!player) return; // 空の場合はさようなら
 
         input.name = 'youtube-api-seek' // もうこれでいいや
@@ -180,7 +180,7 @@ class YouTubeAPI {
         const length = [...player.videos.values()][0].getDuration();
         const second = input.value / 100 * length;
 
-        const elem = input.nextElementSibling.tagName === 'LABEL' ? input.nextElementSibling : strToElement(`<label for=${input.name}></label>`);
+        const elem = input.nextElementSibling?.tagName === 'LABEL' ? input.nextElementSibling : strToElement(`<label for=${input.name}></label>`);
         elem.textContent = `${Math.floor(second/60) ? Math.floor(second/60)+'分' : ''}${Math.floor(second) % 60}秒`;
 
         player.seekTo(second);
