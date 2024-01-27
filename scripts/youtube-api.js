@@ -171,7 +171,7 @@ class YouTubeAPI {
 
     /** @param {HTMLInputElement} input  */
     static seek(input) {
-        const player = this.getPlayer(input.parentElement);
+        const player = this.getPlayer(input.parentElement.parentElement);
         if(!player) return; // 空の場合はさようなら
 
         input.name = 'youtube-api-seek' // もうこれでいいや

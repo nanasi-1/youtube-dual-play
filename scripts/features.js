@@ -10,6 +10,7 @@ class Area {
                     <br>
                     <button onclick="YouTubeAPI.play(this)">再生</button>
                     <button onclick="YouTubeAPI.pause(this)">停止</button>
+                    <input type="range" class="seek-bar" oninput="YouTubeAPI.seek(this)"></input>
                     <button class="area-remove-btn">×</button>
                 </div>
             </section>
