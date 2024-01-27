@@ -7,7 +7,9 @@ body {
 
 main {
     background-color: var(--bg-color);
-    padding: 30px 50px 100px 50px;
+    padding-inline: clamp(0px, 5%, 50px);
+    padding-top: 30px;
+    padding-bottom: 100px;
     min-height: 100%;
     box-sizing: border-box;
 }
@@ -49,7 +51,7 @@ section.card {
 
 button.video-delete-btn {
     position: absolute;
-    left: clamp(0px, calc(97vw - 110px), 740px);
+    left: clamp(0px, calc(70vw + 50px), 740px);
     font-size: 24px;
     padding: 0;
     width: 40px; height: 40px;
