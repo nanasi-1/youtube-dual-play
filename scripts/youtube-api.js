@@ -180,7 +180,7 @@ class YouTubeAPI {
         const length = [...player.videos.values()][0].getDuration();
         const second = input.value / 100 * length;
 
-        const elem = input.nextElementSibling.tagName === 'LABEL' ? input.nextElementSibling : strToElement(`<label for=${input.name}></label>`);
+        const elem = input.nextElementSibling?.tagName === 'LABEL' ? input.nextElementSibling : strToElement(`<label for=${input.name}></label>`);
         elem.textContent = `${Math.floor(second/60) ? Math.floor(second/60)+'分' : ''}${Math.floor(second) % 60}秒`;
 
         player.seekTo(second);
