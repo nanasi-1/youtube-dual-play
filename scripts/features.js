@@ -36,7 +36,7 @@ class Area {
 
         const parent = strToElement(`
         <div class="video-container" data-video-id="${videoId}">
-            <button class="video-delete-btn">×</button>
+            <button class="video-delete-btn btn-white circle">×</button>
         </div>
         `);
         parent.querySelector('.video-delete-btn').addEventListener('click', () => {
