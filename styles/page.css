@@ -1,0 +1,75 @@
+body {
+    margin: 0;
+    height: 100vh;
+    box-sizing: border-box;
+    line-height: 175%;
+}
+
+main {
+    background-color: var(--bg-color);
+    padding: 30px 50px 100px 50px;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+section.card {
+    padding: 0 clamp(0px, 5%, 40px);
+}
+
+.controller {
+    margin-top: 30px;
+    margin-bottom: 25px;
+}
+
+.add-video-btn {
+    margin-bottom: 15px;
+}
+
+.video-container {
+    margin-bottom: 20px;
+    max-width: 640px;
+    height: 100%;
+    aspect-ratio: 640 / 360;
+
+    &:last-child {
+        margin-bottom: 30px;
+    }
+
+    & iframe {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.area-remove-btn,
+.video-delete-btn {
+    border: none;
+    background: none;
+}
+
+button.video-delete-btn {
+    position: absolute;
+    left: clamp(0px, calc(97vw - 110px), 740px);
+    font-size: 24px;
+    padding: 0;
+    width: 40px; height: 40px;
+
+    &::after {
+        width: 40px; height: 40px;
+    }
+}
+
+.area-remove-btn {
+    position: relative;
+    top: 15px;
+    right: -10px;
+    float: right;
+    font-size: 32px;
+    color: var(--primary-color);
+}
+
+.seek-bar {
+    margin-left: 10px;
+    width: 50%;
+    max-width: 250px;
+}
