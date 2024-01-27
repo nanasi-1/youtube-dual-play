@@ -15,8 +15,9 @@ section {
     border: solid 1px var(--primary-color);
     background-color: var(--white-color);
     padding: 0 40px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     border-radius: 10px;
+    box-shadow: var(--shadow-color) 8px 8px;
 }
 
 .controller {
@@ -24,11 +25,23 @@ section {
     margin-bottom: 25px;
 }
 
+.add-video-btn {
+    margin-bottom: 15px;
+}
+
 .video-container {
     margin-bottom: 20px;
+    max-width: 640px;
+    height: 100%;
+    aspect-ratio: 640 / 360;
 
     &:last-child {
         margin-bottom: 30px;
+    }
+
+    & iframe {
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -120,6 +133,25 @@ button.circle {
     }
 }
 
+/* input */
+input[type="text"] {
+    border: solid 1.5px #45b3e6;
+    border-radius: 3px;
+    padding: 9px 12px;
+    font-size: 16px;
+
+    transition: background-color 0.15s;
+
+    &:focus {
+        outline-color: #45b3e6;
+        background-color: #ccf2ff;
+    }
+
+    &::placeholder {
+        color: var(--primary-color);
+    }
+}
+
 .area-remove-btn,
 .video-delete-btn {
     border: none;
@@ -128,7 +160,7 @@ button.circle {
 
 button.video-delete-btn {
     position: absolute;
-    left: 740px;
+    left: clamp(0px, calc(97vw - 110px), 740px);
     font-size: 24px;
     padding: 0;
     width: 40px; height: 40px;
@@ -139,9 +171,9 @@ button.video-delete-btn {
 }
 
 .area-remove-btn {
-    position: absolute;
-    right: 70px;
-    top: 45px;
+    position: relative;
+    left: calc(100% - 150px);
+    top: -65px;
     font-size: 32px;
     color: var(--primary-color);
 }

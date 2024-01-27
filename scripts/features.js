@@ -7,6 +7,7 @@ class Area {
                 <div class="controller">
                     <input type="text" placeholder="追加したい動画のID" class="add-video-input">
                     <button class="add-video-btn" onclick="AreaList.addVideo(this)">動画を追加</button>
+                    <br>
                     <button onclick="YouTubeAPI.play(this)">再生</button>
                     <button onclick="YouTubeAPI.pause(this)">停止</button>
                     <button class="area-remove-btn">×</button>
