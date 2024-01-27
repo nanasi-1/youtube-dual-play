@@ -11,13 +11,69 @@ main {
     box-sizing: border-box;
 }
 
-section {
+.card {
     border: solid 1px var(--primary-color);
     background-color: var(--white-color);
-    padding: 0 40px;
     margin-bottom: 25px;
     border-radius: 10px;
     box-shadow: var(--shadow-color) 8px 8px;
+}
+
+section {
+    padding: 0 clamp(0px, 5%, 40px);
+}
+
+/* details */
+details[open]>summary {
+    border-bottom: solid 1px var(--primary-color);
+    box-shadow: none;
+
+    &::before {
+        transform: rotate(45deg);
+        top: 1px; left: 1px;
+    }
+}
+
+details:has(summary:active):not([open]) {
+    top: 3px;
+}
+
+details {
+    position: relative;
+    transition: all 0.3s, top 0.1s;
+    top: 0px;
+    font-size: 21px;
+
+    > div {
+        margin: 20px clamp(0px, 5%, 40px);
+        font-size: medium;
+    }
+
+    > summary {
+        position: relative;
+        padding: 20px 35px;
+        background-color: var(--skyblue-color);
+        border-radius: 10px;
+        list-style-type: none;
+        box-shadow: 0 2px var(--primary-color);
+
+        &:active {
+            box-shadow: none;
+        }
+
+        &::before {
+            content: "";
+            display: inline-block;
+            width: 15px; height: 15px;
+            border: 3px solid var(--primary-color);
+            border-left: 0; border-bottom: 0;
+            position: relative; top: -2px; left: 3px;
+            margin-right: 15px;
+
+            transition: 0.4s;
+            transform: rotate(135deg);
+        }
+    }
 }
 
 .controller {
@@ -69,7 +125,7 @@ button:not(.area-remove-btn) {
         transition: all 0.4s;
         opacity: 0;
 
-        background-image: linear-gradient(315deg, #45b3e6, #5bceeb);
+        background-image: linear-gradient(315deg, var(--primary-color), var(--sub-color));
         border-radius: 5px;
     }
 
@@ -102,7 +158,7 @@ button.btn-white {
     transition: all 0.15s, box-shadow 0.5s;
 
     &::after {
-        background-image: linear-gradient(315deg, #45b3e6, #5bceeb);
+        background-image: linear-gradient(315deg, var(--primary-color), var(--sub-color));
         transform: translateY(-100%);
     }
 
@@ -135,7 +191,7 @@ button.circle {
 
 /* input */
 input[type="text"] {
-    border: solid 1.5px #45b3e6;
+    border: solid 1.5px var(--primary-color);
     border-radius: 3px;
     padding: 9px 12px;
     font-size: 16px;
@@ -143,8 +199,8 @@ input[type="text"] {
     transition: background-color 0.15s;
 
     &:focus {
-        outline-color: #45b3e6;
-        background-color: #ccf2ff;
+        outline-color: var(--primary-color);
+        background-color: var(--skyblue-color);
     }
 
     &::placeholder {

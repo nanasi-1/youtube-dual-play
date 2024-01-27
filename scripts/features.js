@@ -3,7 +3,7 @@ class Area {
     /** @type {HTMLElement} */ #element;
     constructor() {
         this.#element = strToElement(`
-            <section>
+            <section class="card">
                 <button class="area-remove-btn">×</button>
                 <div class="controller">
                     <input type="text" placeholder="追加したい動画のID" class="add-video-input">
