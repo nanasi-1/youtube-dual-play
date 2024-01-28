@@ -180,3 +180,12 @@ a {
 sub {
     line-height: 100%;
 }
+
+.code-block {
+    border-left: solid 2px var(--shadow-color);
+    padding-left: clamp(0px, 5%, 20px);
+}
+
+h3 {
+    color: var(--primary-color);
+}
