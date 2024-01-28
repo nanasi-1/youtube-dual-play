@@ -12,27 +12,28 @@
     <script src="scripts/lib.js"></script>
     <script src="scripts/youtube-api.js"></script>
     <script src="scripts/features.js"></script>
+    <header>
+        <h1>YouTubeの動画を同時再生</h1>
+        <hr class="header-hr">
+        <p>
+            「YouTubeの動画を同時再生」を開いてくれてありがとうございます！
+        </p>
+        <p>
+            「YouTubeの動画を同時再生」は、その名の通り<strong>複数のYouTubeの動画を同時に再生</strong>できるサイトです。<br>
+            このサイトを使えば、手軽に動画を同時再生できます。<br>
+        </p>
+        <p>
+            <sub>
+                え？<a href="https://viewsync.net/" target="_blank">ViewSync</a>のパクリだろって？<br>
+                いやたまたま発想が被っただけだからね？仕様は全然違うからね？？<br>
+                お願いします許してください<br>
+            </sub>
+        </p>
+    </header>
     <main>
-        <details open class="card">
+        <details class="card">
             <summary>使い方</summary>
             <div>
-                <p>
-                    「YouTubeの動画を同時再生」を開いてくれてありがとうございます！<br>
-                    初見だと結構使い方がわかりづらいと思うので、軽く説明していきます。<br>
-                </p>
-                <section>
-                    <h3>そもそもこれ何？</h3>
-                    <p>
-                        「YouTubeの動画を同時再生」は、その名の通り<strong>複数のYouTubeの動画を同時に再生</strong>するために作られたサービスです。<br>
-                        このサイトを使えば、手軽に動画を同時再生できます。<br>
-                        <sub>
-                            え？<a href="https://viewsync.net/" target="_blank">ViewSync</a>のパクリだろって？<br>
-                            いやたまたま発想が被っただけだからね？仕様は全然違うからね？？<br>
-                            お願いします許してください<br>
-                        </sub>
-                    </p>
-                </section>
-                <hr>
                 <section>
                     <h3>1. 動画IDをコピーする</h3>
                     <p>
@@ -121,6 +122,55 @@
             </div>
         </details>
         <button id="add-area-btn" onclick="AreaList.addArea()" class="circle btn-white">+</button>
+        <details class="card">
+            <summary>技術的な話わかる人向け</summary>
+            <div>
+                <section>
+                    <p>
+                        改善案などがあれば連絡くれると嬉しいです。<br>
+                    </p>
+                    <p>
+                        このサイトは、ソースコードを<a href="https://github.com/nanasi-1/youtube-dual-play">GitHub</a>で公開しています。<br>
+                        ここで何かしらやってくれると喜びます。<br>
+                    </p>
+                </section>
+                <hr>
+                <section>
+                    <h3>改善したいけどできないこと一覧</h3>
+                    <p>
+                        以下の内容は、改善したいけど作者の技量不足によりできないことです。<br>
+                        詳しくは<a href="https://github.com/nanasi-1/youtube-dual-play/issues">Issue</a>を見てみてください。<br>
+                    </p>
+                    <ul>
+                        <li>シークバーの色が他と揃ってない</li>
+                        <li>シークバーが自動で動いてくれない</li>
+                        <li>コンソールに謎のエラーが出ることが結構ある</li>
+                        <li>ページのデザインがなんか微妙</li>
+                    </ul>
+                    <p>
+                        もし上の問題の解決策を知っている方がいれば、ぜひGitHubで連絡ください（SNS系やってない）<br>
+                    </p>
+                </section>
+                <hr>
+                <section>
+                    <p>
+                        ちなみにこのサイトで使っている技術は、<code>HTML/CSS, JavaScript</code>のみです。<br>
+                        どれもフレームワークやライブラリ等は使わずに書いてます。<br>
+                        それどころか<code>npm</code>や<code>yarn</code>すら使ってません。<br>
+                        <code>Jest</code>なんかもないので、テストコードもありません。<br>
+                    </p>
+                    <p>
+                        サイトの仕様的に<a href="https://react.dev/">React</a>使ったらいい感じになりそうだと思ってはいますが、<br>
+                        Reactでの開発はやったことないので躊躇しているのが現状です。<br>
+                    </p>
+                    <p>
+                        そもそもフロントエンドの経験がほぼなく、何していいのかよくわかってません。<br>
+                        そんな感じなので、上の話が少しでも分かった方、ぜひ連絡ください。<br>
+                        お願いします。<br>
+                    </p>
+                </section>
+            </div>
+        </details>
     </main>
     <script src="scripts/onload.js"></script>
 </body>

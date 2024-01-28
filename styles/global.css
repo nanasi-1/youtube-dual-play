@@ -1,7 +1,7 @@
 .card {
     border: solid 1px var(--primary-color);
     background-color: var(--white-color);
-    margin-bottom: 25px;
+    margin-bottom: 28px;
     border-radius: 10px;
     box-shadow: var(--shadow-color) 8px 8px;
 }
@@ -186,6 +186,10 @@ sub {
     padding-left: clamp(0px, 5%, 20px);
 }
 
-h3 {
+h1, h2, h3 {
     color: var(--primary-color);
+}
+
+ul {
+    padding-inline-start: 25px;
 }

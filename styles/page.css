@@ -3,12 +3,13 @@ body {
     height: 100vh;
     box-sizing: border-box;
     line-height: 175%;
+    background-color: var(--white-color);
 }
 
 main {
     background-color: var(--bg-color);
     padding-inline: clamp(0px, 5%, 50px);
-    padding-top: 30px;
+    padding-top: 35px;
     padding-bottom: 100px;
     min-height: 100%;
     box-sizing: border-box;
@@ -74,4 +75,24 @@ button.video-delete-btn {
     margin-left: 10px;
     width: 50%;
     max-width: 250px;
+}
+header {
+    background-color: var(--white-color);
+    text-align: center;
+    padding-block: 20px;
+    line-height: 200%;
+    width: 57%;
+    margin: 35px auto;
+
+    position: relative;
+    box-shadow: var(--shadow-color) 0px 0px 15px;
+}
+
+.header-hr {
+    width: 20%;
+    margin-block: 30px;
+}
+
+#add-area-btn {
+    margin-bottom: 50px;
 }
