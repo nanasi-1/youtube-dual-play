@@ -5,14 +5,172 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YouTubeの動画を同時再生</title>
     <link rel="stylesheet" href="styles/colors.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/page.css">
 </head>
 <body>
     <script src="scripts/lib.js"></script>
     <script src="scripts/youtube-api.js"></script>
     <script src="scripts/features.js"></script>
+    <header>
+        <h1>YouTubeの動画を同時再生</h1>
+        <hr class="header-hr">
+        <p>
+            「YouTubeの動画を同時再生」を開いてくれてありがとうございます！
+        </p>
+        <p>
+            「YouTubeの動画を同時再生」は、その名の通り<strong>複数のYouTubeの動画を同時に再生</strong>できるサイトです。<br>
+            このサイトを使えば、手軽に動画を同時再生できます。<br>
+        </p>
+        <p>
+            <sub>
+                え？<a href="https://viewsync.net/" target="_blank">ViewSync</a>のパクリだろって？<br>
+                いやたまたま発想が被っただけだからね？仕様は全然違うからね？？<br>
+                お願いします許してください<br>
+            </sub>
+        </p>
+    </header>
     <main>
+        <details class="card">
+            <summary>使い方</summary>
+            <div>
+                <section>
+                    <h3>1. 動画IDをコピーする</h3>
+                    <p>
+                        まずは動画IDをクリップボードにコピーします。<br>
+                        動画ID？何それ？と思った方、今から説明するので安心してください。<br>
+                    </p>
+                    <p>
+                        動画IDとは、YouTubeの動画のURLの最後にある謎の文字列のことです。<br>
+                        例えば、こんな感じの動画URLがあります。<br>
+                    </p>
+                    <p class="code-block">
+                        DECO*27 - ヒバナ feat. 初音ミク<br>
+                        <code>https://www.youtube.com/watch?v=hxSg2Ioz3LM</code>
+                    </p>
+                    <p>
+                        <strong>このURLの動画IDは「<code>hxSg2Ioz3LM</code>」です。</strong><br>
+                        URLの形式は「<code>https://www.youtube.com/watch?v=ここが動画ID</code>」なので、<br>
+                        この<strong>「<code>v=</code>」以降を抜き出すと動画IDがわかります。</strong><br>
+                    </p>
+                    <p>
+                        そしたら、この動画IDをコピーしておいてください。<br>
+                    </p>
+                </section>
+                <section>
+                    <h3>2. 動画を追加する</h3>
+                    <p>
+                        そしたら、このサイトに動画を追加していきます。<br>
+                    </p>
+                    <p>
+                        下の方にスクロールすると、「追加したい動画のID」と書かれたボックスがあると思います。<br>
+                        そこを押して、<strong>先ほどコピーしたIDを貼り付け</strong>てください。<br>
+                    </p>
+                    <p>
+                        貼り付けができたら、隣にある<strong>「動画を追加」ボタンを押してください。</strong><br>
+                        すると、デフォルトで入っている動画の下に、入力した動画IDの動画が追加されると思います。<br>
+                    </p>
+                </section>
+                <section>
+                    <h3>3. もう一つの動画も追加する</h3>
+                    <p>
+                        そしたら次は、同時再生したいもう一つの動画も追加していきます。<br>
+                        といっても、<strong>上の2つの手順を繰り返すだけ</strong>です。<br>
+                    </p>
+                    <p>
+                        まずは動画IDをコピーします。<br>
+                        同時再生したい動画をYouTubeで開き、URLの<code>v=</code>以降の部分をコピーしてください。<br>
+                    </p>
+                    <p>
+                        次に、このサイトに動画を追加します。<br>
+                        下にスクロールして、「追加したい動画のID」ボックスに動画IDを貼り付けて、<br>
+                        隣にある「動画を追加」ボタンを押してください。<br>
+                    </p>
+                </section>
+                <section>
+                    <h3>4. 再生する</h3>
+                    <p>
+                        ここまできたらあとは簡単です。<br>
+                        先ほど入力したボックスの下に、「再生」と書かれたボタンがあると思います。<br>
+                        このボタンを押すと、<strong>追加した二つの動画が同時に再生されます。</strong><br>
+                    </p>
+                    <p>
+                        ちなみに、再生ボタンの隣にある「停止」を押すと一時停止ができます。<br>
+                        また、シークバーをいじると再生位置を変更できます。<br>
+                    </p>
+                </section>
+                <hr>
+                <section>
+                    <h3>おまけ：一応2窓もできるよ</h3>
+                    <p>
+                        このサイトでは、普通の動画だけではなくライブ配信も再生できます。<br>
+                        そんな感じなので、一応ライブ配信の複窓もできます。<br>
+                    </p>
+                    <p>
+                        ただ、できるのは再生だけです。<br>
+                        以下のことはできません。<br>
+                    </p>
+                    <ul>
+                        <li>高評価</li>
+                        <li>チャット表示</li>
+                        <li>チャットを打つ</li>
+                    </ul>
+                    <p>
+                        要するに、複窓するなら専用の複窓ツール使ったほうがいいってことです( <br>
+                    </p>
+                </section>
+            </div>
+        </details>
         <button id="add-area-btn" onclick="AreaList.addArea()" class="circle btn-white">+</button>
+        <details class="card">
+            <summary>技術的な話わかる人向け</summary>
+            <div>
+                <section>
+                    <p>
+                        改善案などがあれば連絡くれると嬉しいです。<br>
+                    </p>
+                    <p>
+                        このサイトは、ソースコードを<a href="https://github.com/nanasi-1/youtube-dual-play">GitHub</a>で公開しています。<br>
+                        ここで何かしらやってくれると喜びます。<br>
+                    </p>
+                </section>
+                <hr>
+                <section>
+                    <h3>改善したいけどできないこと一覧</h3>
+                    <p>
+                        以下の内容は、改善したいけど作者の技量不足によりできないことです。<br>
+                        詳しくは<a href="https://github.com/nanasi-1/youtube-dual-play/issues">Issue</a>を見てみてください。<br>
+                    </p>
+                    <ul>
+                        <li>シークバーの色が他と揃ってない</li>
+                        <li>シークバーが自動で動いてくれない</li>
+                        <li>コンソールに謎のエラーが出ることが結構ある</li>
+                        <li>ページのデザインがなんか微妙</li>
+                    </ul>
+                    <p>
+                        もし上の問題の解決策を知っている方がいれば、ぜひGitHubで連絡ください（SNS系やってない）<br>
+                    </p>
+                </section>
+                <hr>
+                <section>
+                    <p>
+                        ちなみにこのサイトで使っている技術は、<code>HTML/CSS, JavaScript</code>のみです。<br>
+                        どれもフレームワークやライブラリ等は使わずに書いてます。<br>
+                        それどころか<code>npm</code>や<code>yarn</code>すら使ってません。<br>
+                        <code>Jest</code>なんかもないので、テストコードもありません。<br>
+                    </p>
+                    <p>
+                        サイトの仕様的に<a href="https://react.dev/">React</a>使ったらいい感じになりそうだと思ってはいますが、<br>
+                        Reactでの開発はやったことないので躊躇しているのが現状です。<br>
+                    </p>
+                    <p>
+                        そもそもフロントエンドの経験がほぼなく、何していいのかよくわかってません。<br>
+                        そんな感じなので、上の話が少しでも分かった方、ぜひ連絡ください。<br>
+                        お願いします。<br>
+                    </p>
+                </section>
+            </div>
+        </details>
     </main>
     <script src="scripts/onload.js"></script>
 </body>
